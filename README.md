@@ -4,15 +4,9 @@ An AutoHotkey script for rerolling Unreal World characters
 
 ## Overview
 
-This tool uses memory pattern scanning techniques to dynamically locate and monitor character attributes in Unreal World. It's designed to work across different game versions (verified on 3.71 and 3.86) by locating memory addresses at runtime rather than using hardcoded offsets.
+Automatically reroll Unreal World characters until target attributes are met.
 
-## Features
-
-- **Version-independent**: Uses pattern scanning to work across different game versions
-- **Configurable targets**: Set minimum desired values for any attribute
-- **Automatic rerolling**: Presses the reroll key and checks attribute values until targets are met
-- **Hotkey controls**: Start and stop rerolling with customizable hotkeys
-- **Detailed logging**: Keeps a log of all activities and attempts
+Designed to work across different game versions (verified on 3.71 and 3.86) by using memory pattern scanning to locate memory addresses at runtime rather than using hardcoded offsets.
 
 ## Requirements
 
@@ -24,16 +18,15 @@ This tool uses memory pattern scanning techniques to dynamically locate and moni
 
 1. Install AutoHotkey v2
 2. Download the script
-3. Place the script in any folder
-4. Run the script with AutoHotkey
+3. Run the script with AutoHotkey
 
 ## Usage
 
-1. Start Unreal World and navigate to the character creation screen
+0. Edit the CONFIG object at the top of the script to set target attributes
+1. Start Unreal World and navigate the character creation flow until you get to the attribute screen
 2. Start the script
 3. Activate the Unreal World window
-4. Press Ctrl+1 (default) to begin automatic rerolling
-5. Press Ctrl+2 (default) to stop rerolling once desired attributes are found
+4. Press Ctrl+1 (default) to begin rerolling. The script will automatically stop when the target attributes are met. Press Ctrl+2 (default) to stop rerolling.
 
 ## Configuration
 
@@ -41,9 +34,7 @@ Edit the CONFIG object at the top of the script to customize:
 
 - Target attribute values
 - Reroll frequency
-- Notification settings
 - Hotkeys
-- Pattern scanning parameters
 
 Example configuration:
 
@@ -76,3 +67,13 @@ global CONFIG := {
         "Weight",       {offset: -18,  target: 200}
     )
 }
+```
+## Troubleshooting
+
+If the script fails to find the attribute array, you're probably screwed. Let me know, and maybe I'll add fallback patterns for the scanner to try, or hardcoded fallbacks for different versions of the game.
+Please include the logs with any submitted issues. Also a warning, the log file isn't managed in any way, so it might get huge.
+
+## Contributing
+Contributions are welcome! Please feel free to submit a PR.
+
+
